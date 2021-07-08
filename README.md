@@ -1,2 +1,2 @@
 # soil_app
-a website for university which specialized to learn soil
+a website for the university which specialized to learn soil
