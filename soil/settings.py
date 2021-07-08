@@ -27,7 +27,7 @@ sys.path.append(os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'django-insecure-lhvdiilc*igrrcl-x=4kd=-3qd2$z=z5xzkse^m1xlph#0#3m$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = []
 
