@@ -20,7 +20,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        fields = ['name', 'about', 'images']
+        fields = '__all__'
 
     def create(self, validated_data):
         images = validated_data.pop('images')
