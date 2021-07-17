@@ -33,7 +33,7 @@ def upload_name(instance, filename):
 
 
 class File(models.Model):
-    name = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
     file = models.FileField(upload_to=upload_name)
 
     def __str__(self):

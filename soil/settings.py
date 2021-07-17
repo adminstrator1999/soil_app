@@ -13,6 +13,9 @@ import os
 import sys
 from pathlib import Path
 
+from django.conf import global_settings
+from django.utils.translation import gettext_lazy as _
+
 import django.conf.locale
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -59,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'soil.urls'
@@ -116,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -127,9 +131,9 @@ USE_L10N = True
 USE_TZ = True
 
 LANGUAGES = (
-    ('en', 'English'),
-    ('ru', 'Russian'),
-    ('uz', 'Uzbek'),
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('uz', _('Uzbek')),
 )
 
 PARLER_LANGUAGES = {
@@ -155,7 +159,7 @@ EXTRA_LANG_INFO = {
 }
 
 django.conf.locale.LANG_INFO.update(EXTRA_LANG_INFO)
-
+global_settings.LANGUAGES = global_settings.LANGUAGES + [('uz', 'Uzbek'), ]
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
@@ -184,6 +188,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100,
 }
+
 from datetime import timedelta
 
 SIMPLE_JWT = {
