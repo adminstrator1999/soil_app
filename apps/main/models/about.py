@@ -9,6 +9,9 @@ class History(BaseModel):
     class Meta:
         verbose_name_plural = 'Histories'
 
+    def __str__(self):
+        return self.text
+
 
 class HistoryImages(models.Model):
     history = models.ForeignKey(History, on_delete=models.CASCADE)

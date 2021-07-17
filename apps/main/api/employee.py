@@ -8,4 +8,4 @@ class EmployeeViewSet(ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     search_fields = ['full_name', ]
-    ordering_fields = ['position', 'created_date', ]
+    ordering_fields = ['created_date', ]

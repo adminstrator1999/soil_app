@@ -6,8 +6,8 @@ class News(BaseModel):
     title = models.CharField(max_length=255)
     short_description = models.CharField(max_length=500)
     body = models.TextField()
-    image = models.ForeignKey('main.File', on_delete=models.CASCADE)
     view_count = models.IntegerField(default=0)
+    video = models.URLField(null=True)
 
     class Meta:
         verbose_name_plural = "News"
@@ -16,3 +16,6 @@ class News(BaseModel):
         return self.title
 
 
+class NewsImage(models.Model):
+    news = models.ForeignKey(News, on_delete=models.CASCADE)
+    image = models.ForeignKey('main.File', on_delete=models.CASCADE)
