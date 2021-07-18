@@ -33,8 +33,6 @@ SECRET_KEY = 'django-insecure-lhvdiilc*igrrcl-x=4kd=-3qd2$z=z5xzkse^m1xlph#0#3m$
 DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = ['*']
-CORS_ALLOWED_ORIGINS = ['*']
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -174,7 +172,7 @@ AUTH_USER_MODEL = 'user.User'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = '/file/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'file/media')
 MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
