@@ -7,6 +7,7 @@ from main.models import File, History, Employee, News, HistoryImages, NewsImage,
 class HistoryImagesAdmin(admin.TabularInline):
     model = HistoryImages
     fk_name = 'history'
+    autocomplete_fields = ('image',)
 
 
 class HistoryAdmin(admin.ModelAdmin):
@@ -17,6 +18,7 @@ class HistoryAdmin(admin.ModelAdmin):
 class NewsImageAdmin(admin.TabularInline):
     model = NewsImage
     fk_name = 'news'
+    autocomplete_fields = ('image',)
 
 
 class NewsAdmin(admin.ModelAdmin):
@@ -27,6 +29,7 @@ class NewsAdmin(admin.ModelAdmin):
 
 class FileAdmin(admin.ModelAdmin):
     list_display = ['name', ]
+    search_fields = ('name', )
 
 
 class EmployeeAdmin(admin.ModelAdmin):
@@ -40,6 +43,7 @@ class ContactAdmin(admin.ModelAdmin):
 class DocumentImageAdmin(admin.TabularInline):
     model = DocumentImages
     fk_name = 'document'
+    autocomplete_fields = ('image',)
 
 
 class DocumentAdmin(admin.ModelAdmin):
@@ -58,6 +62,7 @@ class GalleryAdmin(admin.ModelAdmin):
 class LaboratoryImageAdmin(admin.TabularInline):
     model = LaboratoryImage
     fk_name = 'laboratory'
+    autocomplete_fields = ('image',)
 
 
 class LaboratoryAdmin(admin.ModelAdmin):
@@ -72,6 +77,7 @@ class PartnerAdmin(admin.ModelAdmin):
 class ServiceImageAdmin(admin.TabularInline):
     model = ServiceImages
     fk_name = 'service'
+    autocomplete_fields = ('image',)
 
 
 class ServiceAdmin(admin.ModelAdmin):
