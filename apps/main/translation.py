@@ -1,7 +1,7 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
 
-from main.models import Service, News, File, Laboratory, GalleryType, Employee, Document, History
+from main.models import Service, News, File, Laboratory, GalleryType, Employee, Document, History, Function
 
 
 @register(Service)
@@ -42,3 +42,8 @@ class DocumentTranslation(TranslationOptions):
 @register(History)
 class HistoryTranslation(TranslationOptions):
     fields = ('text', )
+
+
+@register(Function)
+class FunctionTranslation(TranslationOptions):
+    fields = ('title', 'text')

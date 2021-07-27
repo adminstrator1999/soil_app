@@ -5,8 +5,13 @@ from main.models import BaseModel
 
 
 class Laboratory(BaseModel):
+    TYPE = (
+        ('mobile', 'mobile'),
+        ('static', 'static'),
+    )
     name = models.CharField(max_length=255)
     body = models.TextField()
+    type = models.CharField(max_length=6, choices=TYPE)
 
     class Meta:
         verbose_name = _('Laboratory')

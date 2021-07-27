@@ -7,6 +7,7 @@ from main.serializers.laboratory import LaboratorySerializer
 class LaboratoryViewSet(ModelViewSet):
     serializer_class = LaboratorySerializer
     queryset = Laboratory.objects.all()
+    filter_fields = ['type', ]
 
     def get_serializer_context(self):
         context = super(LaboratoryViewSet, self).get_serializer_context()
