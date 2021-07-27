@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext as _
 from main.models import BaseModel
 
 
@@ -10,3 +11,7 @@ class Contact(BaseModel):
 
     def __str__(self):
         return self.full_name
+
+    class Meta:
+        verbose_name = _('Contact')
+        verbose_name_plural = _('Contacts')

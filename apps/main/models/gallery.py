@@ -1,10 +1,14 @@
 from django.db import models
-
+from django.utils.translation import gettext as _
 from main.models import BaseModel
 
 
 class GalleryType(models.Model):
     title = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name = _('Gallery Type')
+        verbose_name_plural = _('Gallery Types')
 
     def __str__(self):
         return self.title
@@ -16,7 +20,8 @@ class Gallery(BaseModel):
     type = models.ForeignKey(GalleryType, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
-        verbose_name_plural = 'Galleries'
+        verbose_name = _('Gallery')
+        verbose_name_plural = _('Galleries')
 
     def __str__(self):
         return self.type.title

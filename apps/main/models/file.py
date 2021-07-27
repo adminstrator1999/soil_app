@@ -36,5 +36,9 @@ class File(models.Model):
     name = models.CharField(max_length=255, null=True, blank=True)
     file = models.FileField(upload_to=upload_name)
 
+    class Meta:
+        verbose_name = _('File')
+        verbose_name_plural = _('Files')
+
     def __str__(self):
         return self.name or f'id={self.id}'
