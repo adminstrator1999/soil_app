@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext as _
 
 from main.models import File, History, Employee, News, HistoryImages, NewsImage, Contact, Document, DocumentImages, \
     GalleryType, Gallery, Laboratory, LaboratoryImage, Partner, Service, ServiceImages, Function
@@ -7,12 +8,13 @@ from main.models import File, History, Employee, News, HistoryImages, NewsImage,
 class HistoryImagesAdmin(admin.TabularInline):
     model = HistoryImages
     fk_name = 'history'
-    autocomplete_fields = ('image',)
+    autocomplete_fields = (_('image'), )
 
 
 class HistoryAdmin(admin.ModelAdmin):
     inlines = [HistoryImagesAdmin, ]
-    list_display = ('text', )
+    list_display = (_('text'), )
+    search_fields = ('text', )
 
 
 class NewsImageAdmin(admin.TabularInline):
@@ -23,21 +25,24 @@ class NewsImageAdmin(admin.TabularInline):
 
 class NewsAdmin(admin.ModelAdmin):
     inlines = [NewsImageAdmin, ]
-    list_display = ('title', 'short_description')
-    readonly_fields = ('view_count', )
+    list_display = (_('title'), _('short_description'))
+    readonly_fields = (_('view_count'), )
+    search_fields = ('title', 'short_description')
 
 
 class FileAdmin(admin.ModelAdmin):
-    list_display = ['name', ]
+    list_display = [_('name'), ]
     search_fields = ('name', 'id')
 
 
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ['full_name', ]
+    list_display = [_('full_name'), ]
+    search_fields = ('full_name', )
 
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ['full_name', 'email', 'phone_number']
+    list_display = [_('full_name'), _('email'), _('phone_number')]
+    search_fields = ('full_name', 'email', 'phone_number')
 
 
 class DocumentImageAdmin(admin.TabularInline):
@@ -48,15 +53,16 @@ class DocumentImageAdmin(admin.TabularInline):
 
 class DocumentAdmin(admin.ModelAdmin):
     inlines = [DocumentImageAdmin, ]
-    list_display = ['name', 'link1', 'link2']
+    list_display = [_('name'), 'link1', 'link2']
+    search_fields = ('name', 'link1')
 
 
 class GalleryTypeAdmin(admin.ModelAdmin):
-    list_display = ('title', )
+    list_display = (_('title'), )
 
 
 class GalleryAdmin(admin.ModelAdmin):
-    list_display = ('type', )
+    list_display = (_('type'), )
 
 
 class LaboratoryImageAdmin(admin.TabularInline):
@@ -67,11 +73,13 @@ class LaboratoryImageAdmin(admin.TabularInline):
 
 class LaboratoryAdmin(admin.ModelAdmin):
     inlines = [LaboratoryImageAdmin, ]
-    list_display = ('name', )
+    list_display = (_('name'), )
+    search_fields = ('name', )
 
 
 class PartnerAdmin(admin.ModelAdmin):
     list_display = ('name', )
+    search_fields = ('name', )
 
 
 class ServiceImageAdmin(admin.TabularInline):
@@ -82,11 +90,13 @@ class ServiceImageAdmin(admin.TabularInline):
 
 class ServiceAdmin(admin.ModelAdmin):
     inlines = [ServiceImageAdmin, ]
-    list_display = ('name', )
+    list_display = (_('name'), )
+    search_fields = ('name', )
 
 
 class FunctionAdmin(admin.ModelAdmin):
-    list_display = ('title', )
+    list_display = (_('title'), )
+    search_fields = ('title', )
 
 
 admin.site.register(File, FileAdmin)
@@ -101,3 +111,6 @@ admin.site.register(Laboratory, LaboratoryAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Function, FunctionAdmin)
+admin.site.site_header = _('Soil University Admin')
+admin.site.site_title = _('Soil University')
+admin.site.index_title = _('Welcome to Soil Research Portal')
