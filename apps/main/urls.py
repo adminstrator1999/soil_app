@@ -11,6 +11,7 @@ from main.api.document import DocumentViewSet
 from main.api.laboratory import LaboratoryViewSet
 from main.api.partner import PartnerViewSet
 from main.api.gallery import GalleryViewSet, GalleryTpeViewSet
+from main.api.static import StaticAPIView
 
 router = routers.DefaultRouter()
 router.register('user', UserViewSet, 'user')
@@ -27,6 +28,7 @@ router.register('gallery_type', GalleryTpeViewSet, 'gallery_type')
 router.register('gallery', GalleryViewSet, 'gallery')
 
 urlpatterns = [
-    path('contact/', ContactApiView, name='contact'),
+    path('contact/', ContactApiView.as_view(), name='contact'),
+    path('static/', StaticAPIView.as_view(), name='static'),
     path('', include(router.urls))
 ]

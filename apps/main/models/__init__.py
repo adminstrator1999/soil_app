@@ -9,3 +9,4 @@ from main.models.document import Document, DocumentImages
 from main.models.laboratory import Laboratory, LaboratoryImage
 from main.models.partner import Partner
 from main.models.gallery import GalleryType, Gallery
+from main.models.static import Static

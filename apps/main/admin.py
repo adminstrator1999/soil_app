@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.translation import gettext as _
 
 from main.models import File, History, Employee, News, HistoryImages, NewsImage, Contact, Document, DocumentImages, \
-    GalleryType, Gallery, Laboratory, LaboratoryImage, Partner, Service, ServiceImages, Function
+    GalleryType, Gallery, Laboratory, LaboratoryImage, Partner, Service, ServiceImages, Function, Static
 
 
 class HistoryImagesAdmin(admin.TabularInline):
@@ -99,6 +99,10 @@ class FunctionAdmin(admin.ModelAdmin):
     search_fields = ('title', )
 
 
+class StaticAdmin(admin.ModelAdmin):
+    list = ('key', 'value')
+
+
 admin.site.register(File, FileAdmin)
 admin.site.register(History, HistoryAdmin)
 admin.site.register(Employee, EmployeeAdmin)
@@ -111,6 +115,7 @@ admin.site.register(Laboratory, LaboratoryAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Function, FunctionAdmin)
+admin.site.register(Static, StaticAdmin)
 admin.site.site_header = _('Soil University Admin')
 admin.site.site_title = _('Soil University')
 admin.site.index_title = _('Welcome to Soil Research Portal')
