@@ -28,7 +28,7 @@ router.register('gallery_type', GalleryTpeViewSet, 'gallery_type')
 router.register('gallery', GalleryViewSet, 'gallery')
 
 urlpatterns = [
-    path('contact/', ContactApiView.as_view(), name='contact'),
-    path('static/', StaticAPIView.as_view(), name='static'),
+    path('contact/', ContactApiView.as_view()),
+    path('static/', StaticAPIView.as_view()),
     path('', include(router.urls))
 ]

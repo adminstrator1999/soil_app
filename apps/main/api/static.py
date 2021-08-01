@@ -7,9 +7,9 @@ from main.models import Static
 
 class StaticAPIView(APIView):
     def get(self, request):
-        data = list()
+        data = dict()
         for item in Static.objects.all():
-            data.append({item.key: item.value})
+            data[item.key] = item.value
         return Response(data, status=status.HTTP_200_OK)
 
 
