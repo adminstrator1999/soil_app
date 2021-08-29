@@ -11,7 +11,8 @@ class NewsViewSet(ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
     ordering_fields = ('created_date', 'view_count', )
-    search_fields = ['title', 'short_description', ]
+    search_fields = ['title', 'title_uz', 'title_ru', 'title_en', 'short_description', 'short_description_uz',
+                     'short_description_ru', 'short_description_en', ]
 
     @action(detail=True, methods=['POST'])
     def views_count(self, request, pk=None):

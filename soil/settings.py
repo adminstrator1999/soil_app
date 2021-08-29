@@ -93,9 +93,9 @@ WSGI_APPLICATION = 'soil.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('NAME', 'soil'),
-        'USER': os.environ.get('USER', 'soil_user'),
-        'PASSWORD': os.environ.get('PASSWORD', 'soil_password'),
+        'NAME': os.environ.get('DATABASE_NAME', 'soil'),
+        'USER': os.environ.get('DATABASE_USERNAME', 'soil_user'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'soil_password'),
         'PORT': 5432
     }
 }
