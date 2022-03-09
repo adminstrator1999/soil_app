@@ -11,6 +11,7 @@ RUN python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install -r requirements.txt && \
     apk del .tmp-deps && \
     chmod +x entrypoint.sh && \
+    chmod +x migrate.sh && \
     adduser --disabled-password --no-create-home soil_app_user
 ENV PATH="/opt/venv/bin:$PATH"
 USER soil_app_user
