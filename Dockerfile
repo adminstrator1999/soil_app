@@ -12,7 +12,12 @@ RUN python3 -m venv /opt/venv && \
     apk del .tmp-deps && \
     chmod +x entrypoint.sh && \
     chmod +x migrate.sh && \
-    adduser --disabled-password --no-create-home soil_app_user
+    adduser --disabled-password --no-create-home soil_app_user && \
+    mkdir -p /volume/web/static && \
+    mkdir -p /volume/web/media && \
+    chown -R soil_app_user:soil_app_user /volume && \
+    chmod -R 755 /volume
+
 ENV PATH="/opt/venv/bin:$PATH"
 USER soil_app_user
 

@@ -9,9 +9,9 @@ from django.utils.translation import gettext as _
 from rest_framework.serializers import ValidationError
 
 FILE_TYPES = {
-    r'^(doc|docx)$': 'document',
+    r'^(doc|docx)$': 'documents',
     r'^(pdf)$': 'pdf',
-    r'^(jpg|jpeg|png|gif)$': 'image',
+    r'^(jpg|jpeg|png|gif)$': 'images',
     r'^(xls|xlsx)$': 'excel',
     r'^(zip|rar)$': 'compressed',
     r'^(mp4|avi|flv)$': 'video',
@@ -24,7 +24,7 @@ def upload_name(instance, filename):
     for regex, folder in FILE_TYPES.items():
         try:
             RegexValidator(regex).__call__(file_type)
-            return 'file/%s/%s/%s.%s' % (
+            return '%s/%s/%s.%s' % (
                 folder, today, uuid.uuid4(), file_type
             )
         except Error:
